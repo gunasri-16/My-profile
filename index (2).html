@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gunasri A — Developer and data analyst</title>
+<meta name="description" content="Portfolio of Gunasri A, MCA graduate working across full-stack web development and Power BI analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300..800&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#07090D;
+  --slate:#0E1218;
+  --panel:#141A23;
+  --steel:#26303E;
+  --fog:#C9D2DE;
+  --mist:#818C9E;
+  --gold:#F0BE45;
+  --gold-dim:#7A6128;
+  --display:"Big Shoulders Display","Arial Narrow",sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+}
+/* The page is intentionally dark in every colour scheme. */
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --void:#07090D; } }
+:root[data-theme="dark"]{ --void:#07090D; }
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--fog);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.7;
+  font-weight:300;
+  overflow-x:hidden;
+}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 50% 100%, rgba(240,190,69,.07) 0%, transparent 58%),
+    linear-gradient(180deg,#0B1018 0%,#080B11 55%,#07090D 100%);
+}
+/* searchlight beam */
+.beam{
+  position:absolute;
+  bottom:12%;
+  left:50%;
+  width:46vw;
+  height:120vh;
+  transform:translateX(-50%) rotate(8deg);
+  transform-origin:50% 100%;
+  background:linear-gradient(to top, rgba(240,190,69,.16) 0%, rgba(240,190,69,.05) 38%, transparent 72%);
+  filter:blur(28px);
+  pointer-events:none;
+  animation:sweep 14s ease-in-out infinite alternate;
+}
+@keyframes sweep{
+  from{transform:translateX(-50%) rotate(11deg);opacity:.85}
+  to{transform:translateX(-50%) rotate(-7deg);opacity:1}
+}
+.skyline{position:absolute;left:0;right:0;bottom:0;width:100%;display:block;pointer-events:none}
+.grain{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size:3px 3px;
+}
+.hero-inner{position:relative;z-index:2;padding-bottom:16vh}
+
+.eyebrow{
+  font-family:var(--body);
+  font-size:.82rem;
+  letter-spacing:.22em;
+  color:var(--gold);
+  margin:0 0 18px;
+  font-weight:500;
+}
+.hero-name{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(4rem,17vw,12rem);
+  line-height:.82;
+  letter-spacing:.005em;
+  text-transform:uppercase;
+  margin:0;
+  color:#EFF3F8;
+  text-shadow:0 0 60px rgba(240,190,69,.14);
+}
+.hero-name .b{display:block;color:var(--gold);font-weight:300}
+.deco-rule{
+  display:flex;align-items:center;gap:12px;
+  margin:26px 0 22px;max-width:520px;
+}
+.deco-rule span{height:1px;background:linear-gradient(90deg,var(--gold),transparent);flex:1}
+.deco-rule i{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex:none}
+.hero-line{max-width:46ch;font-size:clamp(1.02rem,2.2vw,1.22rem);color:var(--fog);margin:0}
+.hero-meta{color:var(--mist);font-size:.93rem;margin:14px 0 0}
+.hero-links{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px 14px}
+.hero-links a{
+  display:inline-block;
+  text-decoration:none;
+  font-size:.86rem;
+  letter-spacing:.06em;
+  font-weight:500;
+  padding:11px 22px;
+  color:var(--gold);
+  border:1px solid var(--gold-dim);
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+  transition:background .2s ease,color .2s ease;
+}
+.hero-links a:hover{background:var(--gold);color:#0A0C10;border-color:var(--gold)}
+
+/* ============ LAYOUT ============ */
+.page{display:grid;grid-template-columns:172px minmax(0,1fr);gap:0 76px;padding:84px 0 0}
+.rail{position:sticky;top:48px;align-self:start;padding-bottom:40px}
+.rail ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--steel)}
+.rail a{
+  display:block;padding:8px 0 8px 18px;margin-left:-1px;
+  border-left:1px solid transparent;text-decoration:none;
+  font-size:.88rem;letter-spacing:.05em;color:var(--mist);
+  transition:color .2s ease;
+}
+.rail a:hover,.rail a.on{color:var(--gold);border-left-color:var(--gold)}
+
+.col{min-width:0;padding-bottom:40px}
+section{padding:0 0 clamp(60px,9vh,96px)}
+h2{
+  font-family:var(--display);
+  font-weight:600;
+  text-transform:uppercase;
+  font-size:clamp(1.9rem,4.4vw,2.9rem);
+  line-height:1;
+  letter-spacing:.02em;
+  margin:0 0 8px;
+  color:#EFF3F8;
+}
+.h2-sub{color:var(--mist);font-size:.88rem;letter-spacing:.14em;margin:0 0 30px}
+p{margin:0 0 18px;max-width:66ch}
+p:last-child{margin-bottom:0}
+strong{color:#EFF3F8;font-weight:500}
+
+/* ============ EXPERIENCE ============ */
+.entry{
+  display:grid;grid-template-columns:152px minmax(0,1fr);gap:0 30px;
+  padding:26px 0;border-top:1px solid var(--steel);
+}
+.entry:last-child{border-bottom:1px solid var(--steel)}
+.when{color:var(--gold);font-size:.85rem;letter-spacing:.06em;padding-top:6px}
+.role{font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:1.45rem;letter-spacing:.02em;margin:0;line-height:1.1;color:#EFF3F8}
+.org{color:var(--mist);font-size:.95rem;margin:6px 0 14px}
+.entry ul{margin:0;padding:0;list-style:none}
+.entry li{position:relative;padding-left:20px;margin:0 0 9px;max-width:60ch}
+.entry li::before{
+  content:"";position:absolute;left:0;top:.72em;
+  width:6px;height:6px;background:var(--gold-dim);transform:rotate(45deg);
+}
+
+/* ============ PROJECTS ============ */
+.projects{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.project{
+  background:linear-gradient(160deg,var(--panel) 0%,var(--slate) 100%);
+  border:1px solid var(--steel);
+  padding:28px 26px 26px;
+  clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
+  transition:border-color .25s ease;
+}
+.project:hover{border-color:var(--gold-dim)}
+.project h3{
+  font-family:var(--display);font-weight:600;text-transform:uppercase;
+  font-size:1.3rem;letter-spacing:.02em;line-height:1.12;margin:0 0 8px;color:#EFF3F8;
+}
+.stack{color:var(--gold);font-size:.82rem;letter-spacing:.08em;margin:0 0 16px}
+.project p{font-size:.97rem;max-width:50ch;margin:0 0 12px}
+
+/* ============ SKILLS ============ */
+dl.skills{margin:0;display:grid;grid-template-columns:168px minmax(0,1fr)}
+dl.skills dt{padding:16px 0;border-top:1px solid var(--steel);color:var(--gold);font-size:.85rem;letter-spacing:.1em}
+dl.skills dd{padding:16px 0;border-top:1px solid var(--steel);margin:0;color:#EFF3F8;font-weight:400}
+dl.skills dt:last-of-type,dl.skills dd:last-of-type{border-bottom:1px solid var(--steel)}
+
+/* ============ EDUCATION ============ */
+.degree{padding:24px 0;border-top:1px solid var(--steel)}
+.degree:last-of-type{border-bottom:1px solid var(--steel)}
+.degree h3{font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:1.3rem;letter-spacing:.02em;margin:0 0 5px;color:#EFF3F8}
+.degree .meta{color:var(--mist);font-size:.93rem;margin:0}
+.degree .score{font-family:var(--display);font-weight:500;font-size:1.5rem;color:var(--gold);margin:10px 0 0;letter-spacing:.03em}
+.note{
+  margin-top:28px;padding:18px 22px;max-width:56ch;
+  border:1px solid var(--gold-dim);
+  background:rgba(240,190,69,.05);
+  clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+}
+.note p{margin:0}
+
+/* ============ CONTACT ============ */
+.contact-list{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px}
+.contact-list a{
+  text-decoration:none;color:#EFF3F8;font-weight:400;
+  border-bottom:1px solid var(--gold-dim);padding-bottom:3px;
+  transition:border-color .2s ease,color .2s ease;
+}
+.contact-list a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+footer{border-top:1px solid var(--steel);padding:26px 0 48px;color:var(--mist);font-size:.85rem}
+
+/* ============ MOTION ============ */
+.reveal{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.12s}.d2{animation-delay:.24s}.d3{animation-delay:.36s}.d4{animation-delay:.48s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .reveal{animation:none}
+  .beam{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:820px){
+  .page{grid-template-columns:1fr;gap:0;padding-top:52px}
+  .rail{position:static;padding-bottom:34px;border-bottom:1px solid var(--steel);margin-bottom:38px}
+  .rail ol{border-left:0;display:flex;flex-wrap:wrap;gap:4px 22px}
+  .rail a{padding:4px 0;border-left:0}
+  .rail a:hover,.rail a.on{border-left:0}
+  .entry{grid-template-columns:1fr;gap:8px}
+  .when{padding-top:0}
+  dl.skills{grid-template-columns:1fr}
+  dl.skills dt{padding-bottom:0}
+  dl.skills dd{padding-top:5px;border-top:0}
+  dl.skills dt:last-of-type{border-bottom:0}
+  .beam{width:80vw}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="beam" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <svg class="skyline" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="towers" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0B0F16"/>
+        <stop offset="100%" stop-color="#05070A"/>
+      </linearGradient>
+    </defs>
+    <g fill="url(#towers)">
+      <polygon points="0,260 0,150 40,150 40,120 70,120 70,150 110,150 110,260"/>
+      <polygon points="100,260 100,96 118,96 118,70 126,70 126,96 144,96 144,260"/>
+      <rect x="150" y="132" width="72" height="128"/>
+      <polygon points="228,260 228,60 244,36 260,60 260,260"/>
+      <rect x="266" y="146" width="58" height="114"/>
+      <polygon points="330,260 330,108 352,108 352,84 362,84 362,56 372,56 372,84 382,84 382,108 404,108 404,260"/>
+      <rect x="410" y="160" width="86" height="100"/>
+      <polygon points="502,260 502,120 520,120 520,92 548,92 548,120 566,120 566,260"/>
+      <rect x="572" y="170" width="52" height="90"/>
+      <polygon points="630,260 630,74 648,50 654,50 654,20 660,20 660,50 666,50 684,74 684,260"/>
+      <rect x="690" y="140" width="76" height="120"/>
+      <polygon points="772,260 772,104 790,104 790,78 820,78 820,104 838,104 838,260"/>
+      <rect x="844" y="164" width="62" height="96"/>
+      <polygon points="912,260 912,88 930,64 948,88 948,260"/>
+      <rect x="954" y="152" width="80" height="108"/>
+      <polygon points="1040,260 1040,116 1058,116 1058,88 1068,88 1068,60 1078,60 1078,88 1088,88 1088,116 1106,116 1106,260"/>
+      <rect x="1112" y="170" width="58" height="90"/>
+      <polygon points="1176,260 1176,98 1194,98 1194,70 1224,70 1224,98 1242,98 1242,260"/>
+      <rect x="1248" y="146" width="70" height="114"/>
+      <polygon points="1324,260 1324,72 1342,44 1360,72 1360,260"/>
+      <rect x="1366" y="158" width="74" height="102"/>
+    </g>
+    <g fill="#F0BE45" opacity=".5">
+      <rect x="166" y="150" width="4" height="7"/><rect x="180" y="168" width="4" height="7"/>
+      <rect x="194" y="150" width="4" height="7"/><rect x="204" y="190" width="4" height="7"/>
+      <rect x="282" y="164" width="4" height="7"/><rect x="300" y="186" width="4" height="7"/>
+      <rect x="424" y="178" width="4" height="7"/><rect x="452" y="200" width="4" height="7"/>
+      <rect x="470" y="178" width="4" height="7"/>
+      <rect x="586" y="188" width="4" height="7"/><rect x="604" y="212" width="4" height="7"/>
+      <rect x="706" y="158" width="4" height="7"/><rect x="730" y="182" width="4" height="7"/>
+      <rect x="748" y="158" width="4" height="7"/>
+      <rect x="860" y="182" width="4" height="7"/><rect x="884" y="206" width="4" height="7"/>
+      <rect x="970" y="170" width="4" height="7"/><rect x="1000" y="194" width="4" height="7"/>
+      <rect x="1014" y="170" width="4" height="7"/>
+      <rect x="1126" y="188" width="4" height="7"/><rect x="1150" y="212" width="4" height="7"/>
+      <rect x="1264" y="164" width="4" height="7"/><rect x="1292" y="188" width="4" height="7"/>
+      <rect x="1382" y="176" width="4" height="7"/><rect x="1410" y="200" width="4" height="7"/>
+    </g>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <p class="eyebrow reveal">Master of Computer Applications, 2026</p>
+    <h1 class="hero-name reveal d1">Gunasri<span class="b">A</span></h1>
+    <div class="deco-rule reveal d2"><i></i><span></span></div>
+    <p class="hero-line reveal d2">I build web applications and turn business data into
+    dashboards people actually use.</p>
+    <p class="hero-meta reveal d3">Nagapattinam, Tamil Nadu — open to developer and data analyst roles</p>
+    <ul class="hero-links reveal d4">
+      <li><a href="#projects">See my work</a></li>
+      <li><a href="mailto:gunasri006@gmail.com">Email me</a></li>
+      <li><a href="https://linkedin.com/in/gunasri-a-b64623328" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ================= BODY ================= -->
+<div class="wrap page">
+  <nav class="rail" aria-label="Sections">
+    <ol>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <main class="col">
+
+    <section id="about">
+      <h2>About</h2>
+      <p class="h2-sub">Who you would be hiring</p>
+      <p>I am a Master of Computer Applications graduate from Vels University with a
+      background in both software development and data analysis. My full-stack
+      internship taught me how an application fits together end to end. My time on
+      a bank sales floor taught me what happens when real customers meet that
+      software — which requirements matter, and which ones nobody actually uses.</p>
+      <p>I work across <strong>React, Node and MongoDB</strong> on the web side, and
+      <strong>Power BI and SQL</strong> on the data side. I am looking for a role
+      where I can keep learning quickly and put my problem-solving to work on
+      problems that matter to the business.</p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <p class="h2-sub">Where I have worked</p>
+
+      <article class="entry">
+        <div class="when">Apr 2026 — Jul 2026</div>
+        <div>
+          <h3 class="role">Assistant Manager, Sales</h3>
+          <p class="org">Axis Bank</p>
+          <ul>
+            <li>Managed customer data, account opening, documentation and digital
+            onboarding processes.</li>
+            <li>Analysed customer requirements and supported cross-selling of
+            banking products.</li>
+            <li>Built lasting customer relationships and handled day-to-day
+            banking support.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when">May 2025 — Jul 2025</div>
+        <div>
+          <h3 class="role">Full Stack Web Development Intern</h3>
+          <p class="org">EDU TANTR</p>
+          <ul>
+            <li>Completed a three-month full-stack development programme.</li>
+            <li>Built dynamic web applications across both front-end and back-end
+            layers.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="h2-sub">What I have built</p>
+      <div class="projects">
+
+        <article class="project">
+          <h3>Sales Performance Dashboard</h3>
+          <p class="stack">Power BI · SQL Server · Excel</p>
+          <p>An interactive dashboard for tracking sales, profit and order trends
+          across a business.</p>
+          <p>I connected Excel and SQL Server as data sources, defined the KPIs that
+          mattered to the reader, and designed the visual reports around them.</p>
+        </article>
+
+        <article class="project">
+          <h3>Food Recommendation for Indian Babies</h3>
+          <p class="stack">React · Node.js · Express · MongoDB</p>
+          <p>A full-stack web application that recommends nutritious Indian foods
+          for babies based on age and dietary needs.</p>
+          <p>I built the responsive React interface and handled data storage and
+          API work with Node, Express and MongoDB.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p class="h2-sub">What I work with</p>
+      <dl class="skills">
+        <dt>Programming</dt><dd>Java, Python, HTML, CSS</dd>
+        <dt>Web</dt><dd>React.js, Node.js, Express.js</dd>
+        <dt>Databases</dt><dd>MySQL, MongoDB, SQL Server</dd>
+        <dt>Analytics</dt><dd>Power BI, MS Excel</dd>
+        <dt>Tools</dt><dd>MS Office, Windows</dd>
+      </dl>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <p class="h2-sub">How I trained</p>
+
+      <div class="degree">
+        <h3>Master of Computer Applications</h3>
+        <p class="meta">Vels University — completed June 2026</p>
+        <p class="score">CGPA 8.99 / 10</p>
+      </div>
+
+      <div class="degree">
+        <h3>Bachelor of Computer Applications</h3>
+        <p class="meta">Bharathidasan University — completed April 2024</p>
+        <p class="score">CGPA 9.05 / 10</p>
+      </div>
+
+      <div class="note">
+        <p>Placed <strong>29th in the university rank list</strong> for the BCA
+        programme at Bharathidasan University.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Get in touch</h2>
+      <p class="h2-sub">I reply to every message</p>
+      <p>If you are hiring, or you just want to talk about something I have built,
+      write to me.</p>
+      <ul class="contact-list">
+        <li><a href="mailto:gunasri006@gmail.com">gunasri006@gmail.com</a></li>
+        <li><a href="tel:+917339206417">+91 73392 06417</a></li>
+        <li><a href="https://linkedin.com/in/gunasri-a-b64623328" target="_blank" rel="noopener">linkedin.com/in/gunasri-a</a></li>
+      </ul>
+    </section>
+
+    <footer>Gunasri A — Nagapattinam, Tamil Nadu</footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+  var map = {};
+  links.forEach(function(a){
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if(el){ map[el.id] = a; }
+  });
+  if(!('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('on'); });
+        if(map[e.target.id]) map[e.target.id].classList.add('on');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  Object.keys(map).forEach(function(id){ obs.observe(document.getElementById(id)); });
+})();
+</script>
+</body>
+</html>
